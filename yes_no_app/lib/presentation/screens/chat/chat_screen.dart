@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/presentation/widgets/chat/her_message_bubble.dart';
+import 'package:yes_no_app/presentation/widgets/chat/my_message_bubble.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -16,7 +18,7 @@ class ChatScreen extends StatelessWidget {
         ),
         title: const Text('Asistente'),
       ),
-      body: _ChatView(),
+      body: const _ChatView(),
     );
   }
 }
@@ -37,10 +39,12 @@ class _ChatView extends StatelessWidget {
                 child: ListView.builder(
               itemCount: 100,
               itemBuilder: (context, index) {
-                return Text('Indice: $index');
+                return (index % 2 == 0)
+                    ? HerMessageBubble()
+                    : MyMessageBubble();
               },
             )),
-            Text('World'),
+            const Text('World'),
           ],
         ),
       ),
